@@ -1,0 +1,28 @@
+name: Deploy to AWS
+
+on:
+  workflow_run:
+    workflows: ["Build and Push Docker Image"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_KEY }}
+
+          script: |
+            cd shoping-web
+            docker stop  ct-shopingweb
+            docker rm ct-shopingweb
+            docker pull ct-shopingweb
+            docker run -d --name ct-shopingweb -p 8080:80 wahyu1002/shoping-web:01
