@@ -1,16 +1,16 @@
-# use base image nginx
-# Gunakan image Nginx resmi sebagai base image
+
+# Gunakan image Nginx resmi
 FROM nginx:alpine
 
-# Hapus direktori default Nginx agar bersih
-RUN rm -rf /etc/nginx/conf.d/*
+# Hapus konfigurasi default Nginx
+RUN rm -rf /usr/share/nginx/html/*
 
-# Salin semua file HTML statis Anda ke direktori yang dilayani Nginx
-# Pastikan folder 'html' ada di direktori yang sama dengan Dockerfile Anda
-COPY html/ /usr/share/nginx/html
+# Salin file website ke direktori html nginx
+COPY . /usr/share/nginx/html
 
-# Ekspos port 80 agar bisa diakses dari luar container
+# Ekspos port 80
 EXPOSE 80
 
-# Perintah default untuk menjalankan Nginx
+# Jalankan Nginx
 CMD ["nginx", "-g", "daemon off;"]
+
