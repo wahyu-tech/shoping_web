@@ -1,3 +1,4 @@
+
 # Gunakan image Nginx resmi
 FROM nginx:alpine
 
@@ -12,3 +13,4 @@ EXPOSE 80
 
 # Jalankan Nginx
 CMD ["nginx", "-g", "daemon off;"]
+
