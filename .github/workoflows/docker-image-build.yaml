@@ -5,7 +5,6 @@ on:
  push:
    branches:
      - main
- pull_request:
 
 jobs:
  build-image:
@@ -27,9 +26,9 @@ jobs:
        uses: docker/metadata-action@v5
        with:
          images: wahyu1002/shoping-web
-         flavor: |
+         flavor: 
            latest=false
-         tags: |
+         tags: 
            type=raw,value=01
 
      - name: Build and Push to Docker Hub
