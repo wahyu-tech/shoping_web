@@ -40,3 +40,22 @@ jobs:
          cache-from: type=gha
          cache-to: type=gha,mode=max
          platforms: linux/amd64
+
+     - name: Deploy to AWS EC2 via SSH
+       uses: appleboy/ssh-action@master
+       with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+                docker pull wahyu1002/shoping-web:0.1.0
+                docker stop shoping-web || true
+                docker rm shoping-web || true
+                docker run -d -p 80:80 --name shoping-web wahyu1002/shoping-web:0.1.0
+
+         
+         
+      
+      
+    

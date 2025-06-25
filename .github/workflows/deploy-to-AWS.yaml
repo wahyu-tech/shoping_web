@@ -1,32 +1,32 @@
 
-name: Deploy to AWS
+# name: Deploy to AWS
 
 
-on:
-  workflow_run:
-    workflows: ["Build and Push Docker Image"]
-    types:
-      - completed
+# on:
+#   workflow_run:
+#     workflows: ["Build and Push Docker Image"]
+#     types:
+#       - completed
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
 
-      - name: Deploy to AWS
-        uses: appleboy/scp-action@v1
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USERNAME }}
-          key: ${{ secrets.AWS_KEY }}
+#       - name: Deploy to AWS
+#         uses: appleboy/scp-action@v1
+#         with:
+#           host: ${{ secrets.AWS_HOST }}
+#           username: ${{ secrets.AWS_USERNAME }}
+#           key: ${{ secrets.AWS_KEY }}
           
 
-          script: |
-            cd shoping-web
-            docker image pull ${{ secrets.DOCKERHUB_USERNAME }} /shoping-web:0.1.0
-            docker stop  ct-shopingweb
-            docker rm ct-shopingweb
-            docker pull ct-shopingweb
-            docker run -d --name ct-shopingweb -p 8080:80 {{secrets.DOCKERHUB_USERNAME}} wahyu1002/shoping-web:0.2.0
+#           script: |
+#             cd shoping-web
+#             docker image pull ${{ secrets.DOCKERHUB_USERNAME }} /shoping-web:0.
+#             docker stop  ct-shopingweb
+#             docker rm ct-shopingweb
+#             docker pull ct-shopingweb
+#             docker run -d --name ct-shopingweb -p 8080:80 {{secrets.DOCKERHUB_USERNAME}} wahyu1002/shoping-web:0.2.0
