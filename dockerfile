@@ -3,7 +3,6 @@
 FROM nginx:alpine
 
 # Hapus konfigurasi default Nginx
-RUN rm -rf /usr/share/nginx/html/*
 
 # Salin file website ke direktori html nginx
 COPY . /usr/share/nginx/html
