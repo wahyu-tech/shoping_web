@@ -21,10 +21,12 @@ jobs:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_KEY }}
+          
 
           script: |
             cd shoping-web
+            docker image pull ${{ secrets.DOCKERHUB_USERNAME }} /shoping-web:0.1.0
             docker stop  ct-shopingweb
             docker rm ct-shopingweb
             docker pull ct-shopingweb
-            docker run -d --name ct-shopingweb -p 8080:80 wahyu1002/shoping-web:01
+            docker run -d --name ct-shopingweb -p 8080:80 {{secrets.DOCKERHUB_USERNAME}} wahyu1002/shoping-web:0.2.0
