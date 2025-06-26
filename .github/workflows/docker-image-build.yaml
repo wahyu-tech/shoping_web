@@ -48,7 +48,7 @@ jobs:
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_KEY }}
           script: |
-                cd shoping_web   
+                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
                 docker stop shoping-web
                 docker rm shoping-web
                 docker pull wahyu1002/shoping-web:0.1.0
