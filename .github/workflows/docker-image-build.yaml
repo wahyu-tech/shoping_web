@@ -52,7 +52,7 @@ jobs:
                 docker pull wahyu1002/shoping-web:0.1.0
                 docker stop shoping-web || true
                 docker rm shoping-web || true
-                docker run -d -p 80:80 --name shoping-web wahyu1002/shoping-web:0.1.0
+                docker run -d -p 8080:80 --name shoping-web wahyu1002/shoping-web:0.1.0
 
          
          
