@@ -45,14 +45,14 @@ jobs:
        uses: appleboy/ssh-action@master
        with:
           host: ${{ secrets.AWS_HOST }}
-          username: ubuntu
+          username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_KEY }}
           script: |
-                docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+                cd shoping_web   
+                docker stop shoping-web
+                docker rm shoping-web
                 docker pull wahyu1002/shoping-web:0.1.0
-                docker stop shoping-web || true
-                docker rm shoping-web || true
-                docker run -d -p 8080:80 --name shoping-web wahyu1002/shoping-web:0.1.0
+                dockerrun -d -p 8080:80 --name shoping-web wahyu1002/shoping-web:0.1.0
 
          
          
