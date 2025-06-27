@@ -1,5 +1,5 @@
 
-# Gunakan image Nginx resmi
+# Gunakan image Nginx
 FROM nginx:alpine
 
 COPY . /usr/share/nginx/html
