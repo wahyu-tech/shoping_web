@@ -51,27 +51,14 @@
                            <li><a href="#">new Releases</a></li>
                            <li><a href="#">promo hari iniii</a></li>
                            <li><a href="#">pelayanan kami</a></li>
-                           <li><style>
-                              body {
-                                 background-color: #000000; /* latar belakang hitam */
-                                 color: white;              /* teks warna putih */
-                                 font-family: Arial, sans-serif;
-                                 text-align: center;
-                                 margin-top: 100px;
-                              }
-                           </style>
-                           </head>
-                           <body>
-                           <h1>Your IP Address is:</h1>
-                           <h2 id="ip">Loading...</h2>
-
-                           <script>
-                              fetch('https://api.ipify.org?format=json')
-                                 .then(response => response.json())
-                                 .then(data => {
-                                 document.getElementById('ip').textContent = data.ip;
-                                 });
-                           </script></li>
+                           <li><h1 style="color: white;">Your IP Address is: <span id="ip">Loading...</span></h1>
+                                 <script>
+                                    fetch('https://api.ipify.org?format=json')
+                                       .then(response => response.json())
+                                       .then(data => {
+                                       document.getElementById('ip').textContent = data.ip;
+                                       });
+                                 </script></li>
                         </ul>
                      </div>
                   </div>
