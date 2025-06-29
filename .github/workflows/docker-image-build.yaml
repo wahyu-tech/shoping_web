@@ -59,7 +59,7 @@ jobs:
        with:
           host: ${{ secrets.AWS_HOST2 }}
           username: ubuntu
-          key: ${{ secrets.AWS_KEY2 }}
+          key: ${{ secrets.AWS_KEY }}
           script: |
                 docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
                 docker pull wahyu1002/shoping-web:0.1.0
